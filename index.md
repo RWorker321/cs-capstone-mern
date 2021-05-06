@@ -16,9 +16,7 @@ testBullets
 - TestBullet03
 
 ### Code
-`testCode;
-x = ABC;
-y = 123;`
+`testCode = "Test Code";`
 
 ### Markdown
 
