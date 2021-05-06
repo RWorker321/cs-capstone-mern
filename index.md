@@ -16,7 +16,7 @@ testBullets
 - TestBullet03
 
 ### Code
-`testCode = "Test Code";`
+`const testCode = "Test Code";`
 
 ### Markdown
 
