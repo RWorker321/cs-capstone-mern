@@ -1,6 +1,6 @@
 ## Start of My Journey...
 
-###Rough Draft
+### Rough Draft
 This is where the synopsis of why and how I began my endeavor to obtain a bachelor's degree in computer science
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
