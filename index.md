@@ -7,17 +7,18 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Challenges
 Test
-**TestBold** and _testItalics_
+**testBold** and _testItalics_
 
 ### OOP and Foundational Concepts
-Test
-
+testBullets
 - TestBullet01
 - TestBullet02
 - TestBullet03
 
 ### Code
-`TestCode`
+`testCode;
+x = ABC;
+y = 123;`
 
 ### Markdown
 
