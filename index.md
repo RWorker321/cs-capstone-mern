@@ -1,6 +1,7 @@
-## Welcome to GitHub Pages
+## Start of My Journey...
 
-You can use the [editor on GitHub](https://github.com/RWorker321/RWorker/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+###Rough Draft
+This is where the synopsis of why and how I began my endeavor to obtain a bachelor's degree in computer science
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
