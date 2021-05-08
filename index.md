@@ -3,19 +3,19 @@
 ### Rough Draft
 This is where the synopsis of why and how I began my endeavor to obtain a bachelor's degree in computer science
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
 ### Challenges
-Test
+This is where I will list challenges
 **testBold** and _testItalics_
 
 ### OOP and Foundational Concepts
+This is where I will cover OOP and foundational concepts learned
 testBullets
 - TestBullet01
 - TestBullet02
 - TestBullet03
 
 ### Code
+Examples code will be displayed here
 `const testCode = "Test Code";`
 
 ### Markdown
