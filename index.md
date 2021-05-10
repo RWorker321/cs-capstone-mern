@@ -37,6 +37,9 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
+### Courses
+Computer Science Capstone CS-499
+
 [Link](url) and ![Image](src)
 ```
 
