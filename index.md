@@ -3,6 +3,9 @@
 ### Rough Draft
 This is where the synopsis of why and how I began my endeavor to obtain a bachelor's degree in computer science
 
+### Courses
+Computer Science Capstone CS-499
+
 ### Challenges
 This is where I will list challenges  
 **testBold** and _testItalics_
@@ -36,9 +39,6 @@ Syntax highlighted code block
 2. List
 
 **Bold** and _Italic_ and `Code` text
-
-### Courses
-Computer Science Capstone CS-499
 
 [Link](url) and ![Image](src)
 ```
