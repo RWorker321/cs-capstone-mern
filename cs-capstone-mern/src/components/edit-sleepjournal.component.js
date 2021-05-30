@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateExercise extends Component {
+export default class EditSleepJournal extends Component {
   constructor(props) {
     super(props);
 
@@ -23,12 +23,25 @@ export default class CreateExercise extends Component {
   }
 
   componentDidMount() {
+    axios.get('http://localhost:5000/sleepjournal/'+this.props.match.params.id)
+      .then(response => {
+        this.setState({
+          username: response.data.username,
+          description: response.data.description,
+          duration: response.data.duration,
+          date: new Date(response.data.date)
+        })   
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+    // Get users from user database url
     axios.get('http://localhost:5000/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
             users: response.data.map(user => user.username),
-            username: response.data[0].username
           })
         }
       })
@@ -38,6 +51,7 @@ export default class CreateExercise extends Component {
 
   }
 
+  // Define change state functions
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
@@ -65,25 +79,26 @@ export default class CreateExercise extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const exercise = {
+    const sleepjournal = {
       username: this.state.username,
       description: this.state.description,
       duration: this.state.duration,
       date: this.state.date
     }
 
-    console.log(exercise);
+    console.log(sleepjournal);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('http://localhost:5000/sleepjournal/update/' + this.props.match.params.id, sleepjournal)
       .then(res => console.log(res.data));
 
     window.location = '/';
   }
 
+  // Render/Return JSX for SleepJournal Edit
   render() {
     return (
     <div>
-      <h3>Create New Exercise Log</h3>
+      <h3>Edit Sleep Journal</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -112,9 +127,9 @@ export default class CreateExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Duration (in minutes): </label>
+          <label>How Long Did You Sleep (in hours): </label>
           <input 
-              type="text" 
+              type="number" 
               className="form-control"
               value={this.state.duration}
               onChange={this.onChangeDuration}
@@ -131,7 +146,7 @@ export default class CreateExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Edit Sleep Journal Log" className="btn btn-primary" />
         </div>
       </form>
     </div>

@@ -6,7 +6,7 @@ let User = require('../models/user.model');
 router.route('/').get((req, res) => {
   // Mongoose methods find method returning promise that returns json
   User.find()
-  // return users in json format
+    // return users in json format
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -14,9 +14,17 @@ router.route('/').get((req, res) => {
 // Handles http post request for adding new users. 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const age = req.body.age;
 
   // Create new instance of user
-  const newUser = new User({username});
+  const newUser = new User({
+    username,
+    firstname,
+    lastname,
+    age,
+  });
 
   // Saves new user or logs error for bad request
   newUser.save()

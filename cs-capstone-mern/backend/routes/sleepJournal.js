@@ -1,9 +1,9 @@
 const router = require('express').Router();
-let Exercise = require('../models/exercise.model');
+const SleepJournal = require('../models/sleepJournal.model');
 
 router.route('/').get((req, res) => {
-  Exercise.find()
-    .then(exercises => res.json(exercises))
+  SleepJournal.find()
+    .then(sleepjournal => res.json(sleepjournal))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -13,41 +13,41 @@ router.route('/add').post((req, res) => {
   const duration = Number(req.body.duration);
   const date = Date.parse(req.body.date);
 
-  const newExercise = new Exercise({
+  const newSleepJournal = new SleepJournal({
     username,
     description,
     duration,
     date,
   });
 
-  newExercise.save()
-  .then(() => res.json('Exercise added!'))
+  newSleepJournal.save()
+  .then(() => res.json('Sleep Journal Added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // mongoDB variable 37:50
 router.route('/:id').get((req, res) => {
-  Exercise.findById(req.params.id)
-    .then(exercise => res.json(exercise))
+  SleepJournal.findById(req.params.id)
+    .then(sleepjournal => res.json(sleepjournal))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').delete((req, res) => {
-  Exercise.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Exercise deleted.'))
+    SleepJournal.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Sleep Journal Deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/update/:id').post((req, res) => {
-  Exercise.findById(req.params.id)
-    .then(exercise => {
-      exercise.username = req.body.username;
-      exercise.description = req.body.description;
-      exercise.duration = Number(req.body.duration);
-      exercise.date = Date.parse(req.body.date);
+  SleepJournal.findById(req.params.id)
+    .then(sleepjournal => {
+      sleepjournal.username = req.body.username;
+      sleepjournal.description = req.body.description;
+      sleepjournal.duration = Number(req.body.duration);
+      sleepjournal.date = Date.parse(req.body.date);
 
-      exercise.save()
-        .then(() => res.json('Exercise updated!'))
+      sleepjournal.save()
+        .then(() => res.json('Sleep Journal Updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));

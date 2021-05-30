@@ -28,18 +28,17 @@ connection.once('open', () => {
 })
 
 // Requires route file and imports
-const exercisesRouter = require('./routes/exercises');
 const userRouter = require('./routes/users');
+const sleepGoalRouter = require('./routes/sleepgoals');
+const sleepJournalRouter = require('./routes/sleepjournal');
 
-// Loads schema for corresponding routing. Anytime user adds /exercies or /users, loads corresponding router
-app.use('/exercises', exercisesRouter);
+// Loads schema for corresponding routing. Anytime user adds  /users, loads corresponding router
 app.use('/users', userRouter);
-
+app.use('/sleepgoals', sleepGoalRouter);
+app.use('/sleepjournal', sleepJournalRouter);
 
 // Starts the server and listens on port
 // type: nodemon server within term to start server
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
-
-
