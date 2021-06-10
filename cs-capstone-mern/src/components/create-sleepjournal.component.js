@@ -73,7 +73,7 @@ export default class CreateSleepJournal extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const sleepjournal = {
+    let sleepjournal = {
       username: this.state.username,
       description: this.state.description,
       duration: this.state.duration,
@@ -83,7 +83,10 @@ export default class CreateSleepJournal extends Component {
     console.log(sleepjournal);
 
     axios.post('http://localhost:5000/sleepjournal/add', sleepjournal)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
 
     window.location = '/';
   }

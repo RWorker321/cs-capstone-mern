@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 // Define a schema representing sleep journal and validation rules
 const sleepJournalSchema = new Schema({
   username: 
-  { type: String, required: true, unique: false, minLength: 3, maxLength: 10 },
+  { type: String, required: true, unique: true, minLength: 3, maxLength: 10 }, // username must be unique and required for each user
   description: { type: String, required: true, maxLength: 100 },
-  duration: { type: Number, required: true, minumum: 6, maximum: 12 }, // User Should aim for minumum of 6 hours and max 12 hours sleep
-  date: { type: Date, default: Date.now}, // Defaults to current date if no date selected
+  duration: { type: Number, required: true, minumum: 0, maximum: 24 }, 
+  date: { type: Date, default: Date.now}, // Defaults to current date if no date selected. Consider changing data format to MM:DD:YY HH:MM
 }, {
   timestamps: true,
 });

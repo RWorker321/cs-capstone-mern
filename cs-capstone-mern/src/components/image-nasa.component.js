@@ -31,16 +31,15 @@ if(!photoData) return <div />;
     // Render/Return JSX for Nasa API image and description
     return (
         <div>
-            <h3>Space Photo to Help You Sleep</h3>
+            <h3>Astronomy Photo to Help You Sleep...</h3>
             <div className="form-group"> 
-            <img src={photoData.url} alt={photoData.title} />
-            <div>
-                <h1>{photoData.title}</h1>
-                <p>{photoData.date}</p>
-                <p>{photoData.explanation}</p>
-            </div>
+                <img src={photoData.url} alt={photoData.title} />
+                <div>
+                    <h1>{photoData.title}</h1>
+                    <p>{photoData.date}</p>
+                    <p>{photoData.explanation}</p>
+                </div>
             </div>
         </div>
-
     );
 }

@@ -3,7 +3,7 @@ This component will find keywords in dream journal and match those strings with 
 Consider using https://www.datamuse.com/api/
  */
 import React from 'react';
-import { Component, useEffect, useState} from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 
 export default class DreamInterpreter extends Component {
@@ -12,10 +12,14 @@ export default class DreamInterpreter extends Component {
         super(props);
         this.state = { 
             returnedWords: [],
-            rhymingWords: {}
+            rhymingWords: {},
+            dreamWord: []
         };
-        this.getJournalWords()
-        this.getRhymingWords()
+
+        this.getJournalWords();
+        //this.getRhymingWords();
+        this.onChangeDreamWord = this.onChangeDreamWord.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     
     // Returns Sleep Journal Object
@@ -44,28 +48,40 @@ export default class DreamInterpreter extends Component {
         })
   }
 
-  // DataMuse Docs
-  // https://www.datamuse.com/api/
+  onChangeDreamWord(e) {
+    this.setState({
+      dreamWord: e.target.value
+    })
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    let dreamWordParam = this.state.dreamWord
+
+    console.log(dreamWordParam);
+  
+  // DataMuse Docs:   https://www.datamuse.com/api/
   // Rhymes, Words that sound like, comparable adjectives. Need to determine which api call to make.
   // rel_jjb adjectives that are often used to describe
-  // Testing api with the word "blue"
-    getRhymingWords(e) {
-      // Test Word "clowns"
-        axios.get('https://api.datamuse.com/words?rel_jjb=clowns') //, User Submitted word will be parameter as query string. 
+
+      // String interpolation for URL string query. 
+      // WiP: Consider adding encoding via encodeURIComponent(), encodeURI(), or escape()
+        axios.get(`https://api.datamuse.com/words?rel_jjb=${dreamWordParam}`) //, User Submitted word will be parameter as query string. 
         .then(response => {
           if (response.data.length > 0) {
             const resData = response.data;
             let rhymingWords = []; // Array for storing rhyming words
             
             // push string description to journalString array
-            
             resData.forEach(element => {
                 rhymingWords.push(element.word)
-                //journalString.split(" ,")
+                // rhymingWords.push(element.score) Consider displaying word score
                 rhymingWords.push(<br />) // Line breaks for each entry
             });
-            // WiP: Parse Sub Strings Here
             console.log(rhymingWords);
+            // WiP: Add conditional for no returned value
+
             this.setState({
                 returnedRhymingWords: [rhymingWords]
               })
@@ -74,34 +90,33 @@ export default class DreamInterpreter extends Component {
         .catch((error) => {
           console.log(error);
         })
-  }
+      }
 
   // Render/Return JSX for Dream Interpreter
     render() {
         return (
         <div>
-        <h1>Your Dream Journal Suggest....</h1>
-        <div>
-          <h3>First Review Your Past Dream Journal Entries</h3>
-        {this.state.returnedWords}
-        </div>
-        <div>
-          <h3>Now that You've Reviewed Your Entries, Input a Word to Find Out the Subjective Meaning</h3>
-          <form>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.placeholder}
-              onChange={this.placeholderFunction}
-              />
-            <input type="submit" value="Work In Progress" className="btn btn-primary" />
-          </form>
-        </div>
-        <div>
-          <h3>Below Are Adjectives that Descrive Your Dream Word</h3>
-          <h4>Test Dream Word is "clowns"</h4>
-          {this.state.returnedRhymingWords}
-        </div>
+          <h1>Your Dream Journal Suggest....</h1>
+          <div>
+            <h3>First Review Your Past Dream Journal Entries</h3>
+          {this.state.returnedWords}
+          </div>
+          <div>
+            <h3>Now that You've Reviewed Your Entries, Input a Word to Find Out the Subjective Meaning</h3>
+            <form onSubmit={this.onSubmit}>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.dreamWord}
+                onChange={this.onChangeDreamWord}
+                />
+              <input type="submit" value="Submit Dream Word" className="btn btn-primary" />
+            </form>
+          </div>
+          <div>
+            <h3>Below Are Adjectives that Describe Your Dream Word</h3>
+            {this.state.returnedRhymingWords}
+          </div>
         </div>
         );
     }
