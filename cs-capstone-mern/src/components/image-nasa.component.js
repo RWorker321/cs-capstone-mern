@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { useEffect, useState} from 'react';
+import "../custom.css";
 
 
 export default function NasaImage() {
@@ -30,12 +31,12 @@ if(!photoData) return <div />;
 
     // Render/Return JSX for Nasa API image and description
     return (
-        <div>
+        <div className="SpaceImage">
             <h3>Astronomy Photo to Help You Sleep...</h3>
             <div className="form-group"> 
-                <img src={photoData.url} alt={photoData.title} />
-                <div>
-                    <h1>{photoData.title}</h1>
+                <img  src={photoData.url} alt={photoData.title} className="NasaImage" />
+                <div className="NasaImageInfo">
+                    <h1 id="NasaTitle">{photoData.title}</h1>
                     <p>{photoData.date}</p>
                     <p>{photoData.explanation}</p>
                 </div>

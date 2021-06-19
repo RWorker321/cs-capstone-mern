@@ -59,7 +59,7 @@ export default class SleepJournalList extends Component {
           <thead className="thead-light">
             <tr>
               <th>Username</th>
-              <th>Description</th>
+              <th>I Had a Dream About...</th>
               <th>Duration</th>
               <th>Date</th>
               <th>Actions</th>

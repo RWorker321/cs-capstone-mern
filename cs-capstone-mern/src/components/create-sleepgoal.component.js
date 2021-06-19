@@ -83,6 +83,7 @@ export default class CreateSleepGoal extends Component {
 
     console.log(sleepgoal);
 
+    // Last element in sleepgoal object is of type Date, so escaping the sleepgoal query is not possible
     axios.post('http://localhost:5000/sleepgoals/add', sleepgoal)
       .then(res => console.log(res.data));
 
@@ -134,6 +135,7 @@ export default class CreateSleepGoal extends Component {
           <label>Date: </label>
           <div>
             <DatePicker
+
               selected={this.state.date}
               onChange={this.onChangeDate}
             />

@@ -126,7 +126,7 @@ export default class EditSleepGoal extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Duration (in hours): </label>
+          <label>Sleep Duration (in hours): </label>
           <input 
               type="number" 
               className="form-control"

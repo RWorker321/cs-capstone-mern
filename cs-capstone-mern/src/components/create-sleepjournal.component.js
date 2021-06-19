@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
 
 export default class CreateSleepJournal extends Component {
   // All React components begin with a super(props) call
@@ -136,6 +137,7 @@ export default class CreateSleepJournal extends Component {
           <label>Date: </label>
           <div>
             <DatePicker
+              showTimeSelect
               selected={this.state.date}
               onChange={this.onChangeDate}
             />

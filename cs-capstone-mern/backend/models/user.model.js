@@ -11,8 +11,8 @@ const userSchema = new Schema({
     trim: true,
     minlength: 3
   },
-    firstname: { type: String, required: false},
-    lastname: { type: String, required: false},
+    firstname: { type: String, required: false, default: ""},
+    lastname: { type: String, required: false, default: ""},
     age: { type: Number, required: true }
 }, {
   timestamps: true,

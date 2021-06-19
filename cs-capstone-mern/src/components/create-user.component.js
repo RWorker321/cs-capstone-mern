@@ -84,7 +84,7 @@ export default class CreateUser extends Component {
           <div className="form-group"> 
           <label>First Name (Optional): </label>
           <input  type="text"
-              required
+              //required
               className="form-control"
               value={this.state.firstname}
               onChange={this.onChangeFirstname}
@@ -93,7 +93,7 @@ export default class CreateUser extends Component {
         <div className="form-group"> 
           <label>Last Name (Optional): </label>
           <input  type="text"
-              required
+              //required
               className="form-control"
               value={this.state.lastname}
               onChange={this.onChangeLastname}

@@ -57,8 +57,8 @@ export default class SleepGoalList extends Component {
           <thead className="thead-light">
             <tr>
               <th>Username</th>
-              <th>Description</th>
-              <th>Duration</th>
+              <th>My Goal is to....</th>
+              <th>Duration Goal</th>
               <th>Date</th>
               <th>Actions</th>
             </tr>

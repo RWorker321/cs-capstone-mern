@@ -58,8 +58,8 @@ export default class DreamInterpreter extends Component {
     e.preventDefault();
 
     let dreamWordParam = this.state.dreamWord
-
     console.log(dreamWordParam);
+    
   
   // DataMuse Docs:   https://www.datamuse.com/api/
   // Rhymes, Words that sound like, comparable adjectives. Need to determine which api call to make.
@@ -67,17 +67,19 @@ export default class DreamInterpreter extends Component {
 
       // String interpolation for URL string query. 
       // WiP: Consider adding encoding via encodeURIComponent(), encodeURI(), or escape()
-        axios.get(`https://api.datamuse.com/words?rel_jjb=${dreamWordParam}`) //, User Submitted word will be parameter as query string. 
+        axios.get(`https://api.datamuse.com/words?rel_jjb=${encodeURIComponent(dreamWordParam)}`) //, User Submitted word will be parameter as query string. 
         .then(response => {
+          //Validate URI param is escaping "=%22, %=%25, ^=%5E, etc.
+          //alert(encodeURIComponent(dreamWordParam))
           if (response.data.length > 0) {
             const resData = response.data;
             let rhymingWords = []; // Array for storing rhyming words
             
             // push string description to journalString array
             resData.forEach(element => {
-                rhymingWords.push(element.word)
-                // rhymingWords.push(element.score) Consider displaying word score
-                rhymingWords.push(<br />) // Line breaks for each entry
+              rhymingWords.push(element.word)
+              // rhymingWords.push(element.score) Consider displaying word score
+              rhymingWords.push(<br />) // Line breaks for each entry
             });
             console.log(rhymingWords);
             // WiP: Add conditional for no returned value

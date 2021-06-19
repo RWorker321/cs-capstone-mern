@@ -19,6 +19,10 @@ import CreateSleepJournal from "./components/create-sleepjournal.component";
 import EditSleepGoal from "./components/edit-sleepgoal.component";
 import EditSleepJournal from "./components/edit-sleepjournal.component";
 
+
+import UsernameList from "./components/user-list.component"
+
+
 import NasaImage from "./components/image-nasa.component";
 import sleepMetrics from "./components/sleep-metrics.component";
 import dreamInterp from "./components/dream-interpreter.components";
@@ -34,6 +38,7 @@ function App() {
       <br/>
       <Route path="/" exact component={SleepGoalList} />
       <Route path="/" exact component={SleepJournalList} />
+      <Route path="/" exact component={UsernameList} />
       <Route path="/editsleepgoal/:id" component={EditSleepGoal} />
       <Route path="/editsleepjournal/:id" component={EditSleepJournal} />
       <Route path="/user" component={CreateUser} />

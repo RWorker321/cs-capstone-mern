@@ -127,7 +127,7 @@ export default class EditSleepJournal extends Component {
               />
         </div>
         <div className="form-group">
-          <label>How Long Did You Sleep (in hours): </label>
+          <label>Sleep Duration (in hours): </label>
           <input 
               type="number" 
               className="form-control"
